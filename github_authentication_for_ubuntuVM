@@ -1,0 +1,30 @@
+# Generate a new SSH key (use your GitHub email)
+ssh-keygen -t ed25519 -C "xxx@gmail.com" -f ~/.ssh/keys_for_github/github_key
+# Start the SSH agent
+eval "$(ssh-agent -s)"
+# Add your private key (use your actual key path)
+ssh-add   ~/.ssh/keys_for_github/github_key
+# Copy the public key to add to GitHub
+cat   ~/.ssh/keys_for_github/github_key
+# Add the key to your GitHub account
+1.	Go to GitHub.com and log in
+2.	Click your profile picture (top-right) → Settings
+3.	In left sidebar, click "SSH and GPG keys"
+4.	Click "New SSH key" button
+5.	Title: Give it a descriptive name like "Ubuntu VM - Central"
+6.	Key: Paste the public key you copied
+7.	Click "Add SSH key"
+# Test the connection
+ssh -vT git@github.com
+#Navigate to your project and check current remote:
+cd ~/ansible-projects/ansible_prj1
+git remote -v
+#If it shows HTTPS URLs (starting with https://), change to SSH:
+# Change remote URL to SSH format
+git remote set-url origin git@github.com:<user_name>/ansible.git
+
+
+Troubleshooting:
+# Check what keys the agent currently has
+ssh-add -l
+# If it shows "The agent has no identities" or errors, your key isn't loaded

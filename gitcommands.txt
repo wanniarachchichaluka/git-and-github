@@ -1,0 +1,35 @@
+git clone https://github.com/wanniarachchichaluka/ansible.git
+git checkout -b add-playbooks-level1
+git push origin add-playbooks-level1 
+git add .
+git commit -m "added 1st playbook inside prj1"
+git branch
+git push origin add-playbooks-level1
+
+
+###################################################################
+# Remove the last commit but keep the changes in your working directory
+git reset --soft HEAD~1
+
+# Now unstage the files you don't want
+git restore --staged file1 file2 folder1 folder2  # Replace with actual files/folders
+
+# Stage only the files you actually wanted
+git add your-intended-file1 your-intended-file2
+
+# Commit again
+git commit -m "Your intended commit message"
+
+# Force push to update your remote branch
+git push --force origin your-branch-name
+
+
+
+rm .git
+
+
+Scenario 1: Your default branch is still called master (old default)
+bash
+# If you see 'master' when you run 'git branch'
+git branch -m master main  # Rename master to main
+git push -u origin main    # Now push
