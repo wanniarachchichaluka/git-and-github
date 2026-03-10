@@ -1,0 +1,37 @@
+How to Change a GitHub Commit Message
+This guide explains how to change commit messages in Git, whether the commits are local or already pushed to GitHub.
+________________________________________
+1. Changing the Most Recent Commit Message
+To change the message of the most recent commit:
+git commit --amend -m "New commit message"
+•	If you omit -m, Git will open the default editor so you can modify the message interactively.
+If the commit has already been pushed to GitHub
+You will need to force push the amended commit:
+git push origin branch-name --force
+⚠️ Warning: Force pushing rewrites history. Make sure no one else is working on the same branch.
+________________________________________
+2. Changing Older or Multiple Commit Messages
+To change a commit message that is not the most recent one:
+1.	Start an interactive rebase for the last N commits:
+git rebase -i HEAD~N
+•	Replace N with the number of recent commits you want to review. For example, HEAD~3 lets you edit the last 3 commits.
+2.	An editor will open showing something like:
+pick abc123 Commit message 1
+pick def456 Commit message 2
+pick ghi789 Commit message 3
+3.	Change pick to reword for commits whose messages you want to edit:
+pick abc123 Commit message 1
+reword def456 Commit message 2
+pick ghi789 Commit message 3
+
+4.	Save and close the editor. Git will allow you to edit the selected commit messages one by one.
+5.	If the commits have already been pushed, force push the changes:
+git push origin branch-name --force
+
+
+________________________________________
+3. Notes & Best Practices
+•	Avoid rewriting history on shared branches unless you coordinate with your team.
+•	Amending or rebasing commits that haven’t been pushed is safe.
+•	Use interactive rebase (git rebase -i) for cleaning up multiple commit messages at once before pushing.
+
