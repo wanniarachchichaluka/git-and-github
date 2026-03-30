@@ -1,0 +1,35 @@
+git commit -am "added a heading" #to add and commit all changed files at the same time.
+
+#downloading the latest version of the GitHub to laptop (opposite of git push)
+git pull 
+
+#tracking all changes
+git log
+
+#Reverting back to an older commit
+git reset -- hard origin/master
+git reset --hard <commit hash> #resetting back to the version in GitHub
+
+#creating a new branch
+git checkout -b branch_to_develop_a_new_feature
+
+#switching branches
+git checkout <branch_name>
+
+#merging feature branch to the master branch
+git merger branch_to_develop_a_new_feature main
+#may result in mergeconflicts, if two different changes has done to same lines. Need to resolve those merge conflicts manually.
+
+#We have to be carefull not to make different changes to same lines to avoid merge conflicts
+
+#github pages : allow to deploy a website and 
+
+
+
+
+
+
+
+
+
+
